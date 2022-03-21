@@ -1,5 +1,5 @@
 {
-  "name": "prooph/event-store",
+  "name": "luxuselg/event-store",
   "type": "library",
   "license": "BSD-3-Clause",
   "authors": [
@@ -19,7 +19,7 @@
   "require": {
     "php": "^7.4|^8.0",
     "ext-json": "*",
-    "ramsey/uuid": "^3.9.3"
+    "ramsey/uuid": "^4.2.2"
   },
   "require-dev": {
     "amphp/amp": "^2.4.4",
