@@ -14,16 +14,19 @@ declare(strict_types=1);
 namespace Prooph\EventStore\Util;
 
 use Ramsey\Uuid\FeatureSet;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidInterface;
 
 class Guid
 {
-    private static ?UuidFactory $factory = null;
+    // private static ?UuidFactory $factory = null;
 
     public static function generate(): UuidInterface
     {
-        return self::factory()->uuid4();
+        // changed away from factory due to bug:
+        // https://github.com/ramsey/uuid/issues/314
+        return Uuid::uuid4();
     }
 
     public static function generateString(): string
@@ -44,12 +47,12 @@ class Guid
 
     public static function fromString(string $uuid): UuidInterface
     {
-        return self::factory()->fromString($uuid);
+        return Uuid::fromString($uuid);
     }
 
     public static function fromBytes(string $bytes): UuidInterface
     {
-        return self::factory()->fromBytes($bytes);
+        return Uuid::fromBytes($bytes);
     }
 
     public static function empty(): string
@@ -61,12 +64,12 @@ class Guid
     {
     }
 
-    private static function factory(): UuidFactory
+  /*   private static function factory(): UuidFactory
     {
         if (null === self::$factory) {
             self::$factory = new UuidFactory(new FeatureSet(true));
         }
 
         return self::$factory;
-    }
+    } */
 }
